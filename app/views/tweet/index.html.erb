@@ -2,4 +2,5 @@
 
 <% @tweets.each do |tweet| %>
   <p><%= tweet.content %></p>
+  <p><%= tweet.created_at.strftime("%-I:%M %p - %-d %b %Y") %></p>
 <% end %>
