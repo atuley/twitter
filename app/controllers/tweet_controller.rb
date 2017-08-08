@@ -12,11 +12,11 @@ class TweetController < ApplicationController
     end
   end
 
-  def tweet_params
-    params.require(:tweet).permit(:content)
+  def index
+    @tweets = Tweet.all
   end
 
-  def show
-    Tweet.all
+  def tweet_params
+    params.require(:tweet).permit(:content)
   end
 end
