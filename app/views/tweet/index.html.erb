@@ -1,0 +1,12 @@
+<div class="container u-margin-top">
+  <h1>Tweets</h1>
+  <% @tweets.each do |tweet| %>
+    <div class="row">
+      <div class="col-md-6 tweet">
+        <h3><%= tweet.content %></h3>
+        <p><%= tweet.created_at.strftime("%-I:%M %p - %-d %b %Y") %></p>
+        <a href="#">Favorite</a>
+      </div>
+    </div>
+  <% end %>
+</div>
