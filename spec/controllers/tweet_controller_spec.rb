@@ -10,10 +10,10 @@ RSpec.describe TweetController, type: :controller do
     end
   end
 
-  # How to test my controller properly
+  # How to test my controller properly RAILS 5 ISSUE
   # describe "POST #create" do
   #   it "with valid tweet info" do
-  #     post :create, { tweet: { content: valid_tweet.content } }
+  #     post :create, tweet: valid_tweet.content
   #     expect(response).to have_http_status(:success)
   #   end
   # end

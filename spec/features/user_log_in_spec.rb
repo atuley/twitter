@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Sign up for an account' do
+feature 'Log into account' do
   let!(:valid_user_infomation) { build(:user) }
   let!(:invalid_user_information) { build(:user, email: '') }
 
