@@ -1,6 +1,7 @@
 class TweetController < ApplicationController
 
   before_action :authorize, only: [:new, :create]
+  before_action :find_tweet, only: [:destroy]
 
   def new
     @tweet = Tweet.new
@@ -20,13 +21,18 @@ class TweetController < ApplicationController
     @tweets = Tweet.all
   end
 
+  def destroy
+    @tweet.destroy
+    redirect_to '/'
+  end
+
   private
 
   def tweet_params
     params.require(:tweet).permit(:content, :user_id)
   end
 
-  def find_post
+  def find_tweet
     @tweet = Tweet.find(params[:id])
   end
 end

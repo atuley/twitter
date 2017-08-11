@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   root to: 'tweet#index'
   get '/tweet/new', to: 'tweet#new'
   post '/tweet/new', to: 'tweet#create'
-  resource :tweet
+  resources :tweet
 end
