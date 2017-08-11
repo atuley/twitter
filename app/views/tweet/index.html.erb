@@ -3,8 +3,9 @@
   <% @tweets.each do |tweet| %>
     <div class="row">
       <div class="col-md-6 tweet">
-        <h3><%= tweet.content %></h3>
+        <h3><strong><%= tweet.user.email if tweet.user %></strong></h3><h3><%= tweet.content %></h3>
         <p><%= tweet.created_at.strftime("%-I:%M %p - %-d %b %Y") %></p>
+
         <a href="#">Favorite</a>
       </div>
     </div>
