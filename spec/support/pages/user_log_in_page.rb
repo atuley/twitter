@@ -1,6 +1,6 @@
 require 'support/pages/00_page'
 
-class UserSignUpPage < Page
+class UserLogInPage < Page
 
   def fill_in_account_information(user_info)
     fill_in 'Email', with: user_info.email
@@ -8,6 +8,6 @@ class UserSignUpPage < Page
   end
 
   def submit
-    click_button 'Sign Up'
+    click_button 'Log In'
   end
 end
