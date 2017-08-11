@@ -5,7 +5,15 @@
   &-top-sm {
     margin-top: 15px;
   }
+  &-top-xs {
+    margin-top: 5px;
+  }
   &-left-sm {
     margin-left: 15px;
   }
+}
+
+.u-inline {
+  display: inline !important;
+
 }
