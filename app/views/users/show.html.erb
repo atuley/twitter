@@ -1,0 +1,20 @@
+<div class="container u-margin-top">
+  <p><%= @user.email %></p>
+
+  <% @user.tweets.each do |tweet| %>
+    <div class="row">
+      <div class="col-md-6 tweet-box">
+        <div class="row u-margin-top-xs">
+          <h3 class="col-md-4 tweet-email"><%= tweet.user.email if tweet.user %></h3>
+          <h3 class="col-md-8 tweet-content"><strong><%= tweet.content %></strong></h3>
+        </div>
+        <p><%= tweet.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%-I:%M %p - %-d %b %Y") %></p>
+
+        <a href="#">Favorite</a>
+        <% if current_user == tweet.user %>
+          <%= link_to "Delete", tweet_path(tweet), method: :delete %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

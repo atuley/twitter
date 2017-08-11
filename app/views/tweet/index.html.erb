@@ -3,9 +3,9 @@
   <div class="u-margin-top-sm">
     <% @tweets.each do |tweet| %>
       <div class="row">
-        <div class="col-md-6 tweet-box">
+        <div class="col-md-8 tweet-box">
           <div class="row u-margin-top-xs">
-            <h3 class="col-md-4 tweet-email"><%= tweet.user.email if tweet.user %></h3>
+            <h3 class="col-md-4 tweet-email"><%= link_to tweet.user.email, tweet.user %></h3>
             <h3 class="col-md-8 tweet-content"><strong><%= tweet.content %></strong></h3>
           </div>
           <p><%= tweet.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%-I:%M %p - %-d %b %Y") %></p>
