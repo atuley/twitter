@@ -1,5 +1,6 @@
 <div class="container u-margin-top">
   <p><%= @user.email %></p>
+  <button class="btn btn-primary"><%= link_to 'Follow' %></button>
 
   <% @user.tweets.each do |tweet| %>
     <div class="row">
