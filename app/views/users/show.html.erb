@@ -14,9 +14,8 @@
     <% end %>
   <% end %>
 
-  <h1>Followers: <%= @user.followers.count %></h1>
+  <h1>Followers: <%= link_to @user.followers.count, relationship_path %></h1>
   <h1>Following: <%= @user.following.count %></h1>
-
 
   <% @user.tweets.each do |tweet| %>
     <div class="row">
