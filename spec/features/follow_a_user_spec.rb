@@ -31,7 +31,6 @@ feature 'Follow a user' do
     follow_a_user_page.follow
 
     expect(current_path).to eq("/users/1")
-    expect(follow_a_user_page).to have_text("Unfollow")
     expect(follow_a_user_page).to have_text("Followers: 1")
   end
 end

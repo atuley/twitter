@@ -7,6 +7,6 @@ class FollowAUserPage < Page
   end
 
   def follow
-    click_link 'Follow'
+    click_button 'Follow'
   end
 end
