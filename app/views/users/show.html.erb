@@ -1,6 +1,22 @@
 <div class="container u-margin-top">
   <p><%= @user.email %></p>
-  <button class="btn btn-primary"><%= link_to 'Follow' %></button>
+  <% if current_user.id != @user.id %>
+    <% if !current_user.following?(@user) %>
+      <%= form_for current_user.active_relationships.build do |f| %>
+        <div><%= hidden_field_tag :followed_id, @user.id %></div>
+        <%= f.submit "Follow", class: "btn btn-primary" %>
+      <% end %>
+    <% else %>
+      <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id), html: {method: :delete}) do |f| %>
+        <div><%= hidden_field_tag :followed_id, @user.id %></div>
+        <%= f.submit "Unfollow", class: "btn btn-primary" %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <h1>Followers: <%= @user.followers.count %></h1>
+  <h1>Following: <%= @user.following.count %></h1>
+
 
   <% @user.tweets.each do |tweet| %>
     <div class="row">
