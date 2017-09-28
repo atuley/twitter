@@ -1,28 +1,38 @@
 <div class="container u-margin-top">
-  <p><%= @user.email %></p>
-  <% if current_user.id != @user.id %>
-    <% if !current_user.following?(@user) %>
-      <%= form_for current_user.active_relationships.build do |f| %>
-        <div><%= hidden_field_tag :followed_id, @user.id %></div>
-        <%= f.submit "Follow", class: "btn btn-primary" %>
-      <% end %>
-    <% else %>
-      <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id), html: {method: :delete}) do |f| %>
-        <div><%= hidden_field_tag :followed_id, @user.id %></div>
-        <%= f.submit "Unfollow", class: "btn btn-primary" %>
-      <% end %>
-    <% end %>
-  <% end %>
+  <div class="row col-md-12">
+    <div class="row u-margin-bottom-sm">
+      <div class="col-md-4">
+        <h1 class="u-inline"><%= @user.email %></h1>
+      </div>
+      <div class="col-md-2">
+        <% if current_user.id != @user.id %>
+          <% if !current_user.following?(@user) %>
+            <%= form_for current_user.active_relationships.build do |f| %>
+              <div><%= hidden_field_tag :followed_id, @user.id %></div>
+              <%= f.submit "Follow", class: "btn btn-primary" %>
+            <% end %>
+          <% else %>
+            <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id), html: {method: :delete, class: 'u-inline'}) do |f| %>
+              <div><%= hidden_field_tag :followed_id, @user.id %></div>
+              <%= f.submit "Unfollow", class: "btn btn-primary" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
 
-  <h1>Followers: <%= link_to @user.followers.count, relationship_path %></h1>
-  <h1>Following: <%= @user.following.count %></h1>
+    <div class="u-margin-bottom-sm">
+      <h3 class="u-inline">Followers: <%= link_to @user.followers.count, relationship_path %></h3>
+      <h3 class="u-inline">Following: <%= link_to @user.following.count, relationship_path %></h3>
+    </div>
+  </div>
 
   <% @user.tweets.each do |tweet| %>
     <div class="row">
       <div class="col-md-6 tweet-box">
         <div class="row u-margin-top-xs">
-          <h3 class="col-md-4 tweet-email"><%= tweet.user.email if tweet.user %></h3>
-          <h3 class="col-md-8 tweet-content"><strong><%= tweet.content %></strong></h3>
+          <h3 class="col-md-5 tweet-email"><%= tweet.user.email if tweet.user %></h3>
+          <h3 class="col-md-7 tweet-content"><strong><%= tweet.content %></strong></h3>
         </div>
         <p><%= tweet.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%-I:%M %p - %-d %b %Y") %></p>
 

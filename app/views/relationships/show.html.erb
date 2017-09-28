@@ -1,12 +1,26 @@
 <div class="container u-margin-top">
-  <h1>Followers</h1>
-  <div class="u-margin-top-sm">
-    <% @user.followers.each do |follower| %>
-      <div class="row">
-        <div class="col-md-8 tweet-box">
-          <h3 class="col-md-4 tweet-email"><%= link_to follower.email, follower %></h3>
+  <div class="row">
+
+    <div class="col-md-4 u-margin-top-sm">
+      <h1>Followers</h1>
+      <% @user.followers.each do |follower| %>
+        <div class="row">
+          <div class="tweet-box">
+            <h3 class="tweet-email u-margin-left-sm"><%= link_to follower.email, follower %></h3>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+
+    <div class="col-md-4 u-margin-top-sm">
+      <h1>Following</h1>
+      <% @user.following.each do |follower| %>
+        <div class="row">
+          <div class="tweet-box">
+            <h3 class="tweet-email u-margin-left-sm"><%= link_to follower.email, follower %></h3>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
