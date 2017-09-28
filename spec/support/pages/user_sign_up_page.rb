@@ -11,4 +11,8 @@ class UserSignUpPage < Page
   def submit
     click_button 'Sign Up'
   end
+
+  def logout
+    click_link 'Logout'
+  end
 end
