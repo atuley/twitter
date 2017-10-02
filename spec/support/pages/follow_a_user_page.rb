@@ -7,6 +7,6 @@ class FollowAUserPage < Page
   end
 
   def follow
-    click_button 'Follow'
+    find(".qa-follow-a-user").click
   end
 end

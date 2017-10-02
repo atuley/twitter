@@ -5,6 +5,7 @@ class TweetPage < Page
     visit "/tweet/new"
   end
 
+  # TODO: left off here
   def fill_in_tweet(tweet)
     fill_in 'What is on your mind?', with: tweet.content
   end
