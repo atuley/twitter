@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :tweet do
-    content "This is a tweet" 
+    user { create(:user) }
+    content "This is a tweet"
   end
 end

@@ -2,6 +2,6 @@ require 'support/pages/00_page'
 
 class ViewFollowingFollowersPage < Page
   def view_followers
-    click_link '1'
+    find(".qa-user-followers").click
   end
 end
