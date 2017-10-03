@@ -1,19 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe TweetController, type: :controller do
-  let!(:valid_tweet) { build(:tweet) }
-  let!(:invalid_tweet) { build(:tweet, content: '') }
-  let!(:valid_user_infomation) { build(:user) }
+  let!(:user) { create(:user) }
+  let!(:valid_tweet) { create(:tweet) }
+  let!(:invalid_tweet) { build(:tweet, content: "") }
 
-  # Do I test negative controller cases? i.e. returns 404
+  # TODO: SEED FILE
 
   before(:each) do
-    user_sign_up_page.visit("/users/new")
-    user_sign_up_page.fill_in_account_information(valid_user_infomation)
-    user_sign_up_page.submit
+    allow(controller).to receive(:current_user) { user }
   end
-
-  # Should be expecting 200 but was getting 302
 
   describe "GET #index" do
     it "returns http success" do
@@ -25,15 +21,26 @@ RSpec.describe TweetController, type: :controller do
   describe "GET #new" do
     it "returns http success" do
       get :new
-      expect(response).to have_http_status(302)
+      expect(response).to have_http_status(200)
     end
   end
 
   describe "POST #create" do
     it "with valid tweet info" do
-      post :create, params: { content: valid_tweet.content }
+      post :create, params: {tweet: {content: valid_tweet.content}}
       expect(response).to have_http_status(302)
+    end
+
+    it "with invalid tweet info" do
+      post :create, params: {tweet: {content: invalid_tweet.content}}
+      expect(response).to have_http_status(422)
     end
   end
 
+  describe "DELETE #destroy" do
+    it "deletes tweet" do  
+      delete :destroy, params: {tweet: valid_tweet}
+      expect(response).to have_http_status(200)
+    end
+  end
 end

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_url, notice: 'Thanks'
     else
-      render :new
+      render :new, status: 422
     end
   end
 
