@@ -7,13 +7,7 @@ RSpec.describe TweetController, type: :controller do
 
   # TODO: SEED FILE
   # TODO: test current url and stuff?
-
-  describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(200)
-    end
-  end
+  # TODO: selenium-server to drive tests
 
   describe "GET #new" do
     it "while logged in returns http success" do
@@ -42,8 +36,15 @@ RSpec.describe TweetController, type: :controller do
     end
   end
 
+  describe "GET #index" do
+    it "returns http success" do
+      get :index
+      expect(response).to have_http_status(200)
+    end
+  end
+
   describe "DELETE #destroy" do
-    it "deletes tweet refreshes page" do  
+    it "deletes tweet refreshes page" do
       allow(controller).to receive(:current_user) { user }
       delete :destroy, params: {id: valid_tweet.id}
       expect(response).to have_http_status(302)
