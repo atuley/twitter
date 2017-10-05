@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_secure_password
 
   validates :email, :password, :password_confirmation, presence: true
+  # TODO: fix email hash check
+  # TODO: fix duplicate logins/account creation
   validates :email, format: { with: %r{.+@.+\..+} }
   validates :password, length: { within: 6..40 }
 
