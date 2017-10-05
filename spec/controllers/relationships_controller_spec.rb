@@ -20,4 +20,12 @@ RSpec.describe RelationshipsController, type: :controller do
       expect(response).to have_http_status(302)
     end
   end
+
+  describe "POST #show" do
+    it "return http success" do
+      allow(controller).to receive(:current_user) { user }
+      post :show, params: {id: user.id}
+      expect(response).to have_http_status(200)
+    end
+  end
 end
