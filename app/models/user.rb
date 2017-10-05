@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_secure_password
 
   validates :email, :password, :password_confirmation, presence: true
+  # TODO: implement a "Your Feed" that only shows your tweets and the people you follow, and then a home page thing
   # TODO: fix email hash check
   # TODO: fix duplicate logins/account creation
   validates :email, format: { with: %r{.+@.+\..+} }
