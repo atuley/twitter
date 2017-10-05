@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Log into account' do
   let!(:user) { create(:user, {email: 'foo2@bar.com'}) }
   let!(:tweet) { create(:tweet) }
-  # TODO: creating a tweet with a specified user association(syntax thing)
+  # QUESTION: creating a tweet with a specified user association(syntax thing)
   # let!(:tweettwo) { create(:tweet, {content: "heyo"}, { user: user}) }
 
   before(:each) do

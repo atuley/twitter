@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe User do
-  # TODO: should I be adding values to actually test some of this
+  # QUESTION: should I be adding values to actually test some of this
 
   describe "has_many" do
     it { should have_many :tweets }

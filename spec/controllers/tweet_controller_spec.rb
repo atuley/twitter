@@ -5,9 +5,9 @@ RSpec.describe TweetController, type: :controller do
   let!(:valid_tweet) { create(:tweet) }
   let!(:invalid_tweet) { build(:tweet, content: "") }
 
-  # TODO: SEED FILE
-  # TODO: test current url and stuff?
-  # TODO: selenium-server to drive tests
+  # TODO: setup file, heroku deploy
+  # QUESTION: test current url and stuff?
+  # QUESTION: selenium-server to drive tests
 
   describe "GET #new" do
     it "while logged in returns http success" do

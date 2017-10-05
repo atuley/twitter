@@ -12,7 +12,6 @@ RSpec.describe RelationshipsController, type: :controller do
     end
   end
 
-  # TODO: left off here
   describe "DELETE #destroy" do
     xit "deletes session refreshes page" do
       allow(controller).to receive(:current_user) { user }
