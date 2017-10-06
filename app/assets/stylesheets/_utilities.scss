@@ -5,17 +5,43 @@
   &-top-sm {
     margin-top: 15px;
   }
+  &-top-md {
+    margin-top: 10px;
+  }
   &-top-xs {
     margin-top: 5px;
   }
   &-left-sm {
     margin-left: 15px;
   }
+  &-right-sm {
+    margin-right: 15px;
+  }
   &-bottom-sm {
     margin-bottom: 15px;
   }
 }
 
+.u-pad {
+  &-left {
+    padding-left: 15px;
+  }
+}
+
 .u-inline {
   display: inline !important;
+}
+
+.u-block {
+  display: block !important;
+}
+
+.u-bold {
+  font-weight: bold !important;
+}
+
+.u-align {
+  &-center {
+    text-align: center;
+  }
 }

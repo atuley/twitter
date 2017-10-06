@@ -5,6 +5,8 @@ feature 'Follow a user' do
   let!(:user1) { build(:user) }
   let!(:user2) { build(:user, {email: 'foo2@bar.com'}) }
 
+  # TODO: add twitter handle instead of username
+
   before(:each) do
     # create user 1 account
     user_sign_up_page.visit("/users/new")

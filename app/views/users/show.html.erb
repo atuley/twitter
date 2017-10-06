@@ -1,46 +1,73 @@
 <div class="container u-margin-top">
   <div class="row col-md-12">
     <div class="row u-margin-bottom-sm">
-      <div class="col-md-4">
-        <h1 class="u-inline"><%= @user.email %></h1>
-      </div>
-      <div class="col-md-2">
-        <% if current_user.id != @user.id %>
-          <% if !current_user.following?(@user) %>
-            <%= form_for current_user.active_relationships.build do |f| %>
-              <div><%= hidden_field_tag :followed_id, @user.id %></div>
-              <%= f.submit "Follow", class: "btn btn-primary" %>
-            <% end %>
-          <% else %>
-            <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id), html: {method: :delete, class: 'u-inline'}) do |f| %>
-              <div><%= hidden_field_tag :followed_id, @user.id %></div>
-              <%= f.submit "Unfollow", class: "btn btn-primary" %>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
 
-    <div class="u-margin-bottom-sm">
-      <h3 class="u-inline">Followers: <%= link_to @user.followers.count, relationship_path %></h3>
-      <h3 class="u-inline">Following: <%= link_to @user.following.count, relationship_path %></h3>
     </div>
   </div>
+</div>
 
-  <% @user.tweets.each do |tweet| %>
+<div class="profile-info u-margin-bottom-sm ">
+  <div class="container">
     <div class="row">
-      <div class="col-md-6 tweet-box">
-        <div class="row u-margin-top-xs">
-          <h3 class="col-md-5 tweet-email"><%= tweet.user.email if tweet.user %></h3>
-          <h3 class="col-md-7 tweet-content"><strong><%= tweet.content %></strong></h3>
+      <div class="col-md-3">
+        profile pic
+      </div>
+      <div class="col-md-9 u-pad-left">
+        <div class="row">
+          <p class="col-md-2 profile-info-text profile-info-text-title profile-info-border-left">Tweets</p>
+          <p class="col-md-2 profile-info-text profile-info-text-title profile-info-border-left">Followers</p>
+          <p class="col-md-2 profile-info-text profile-info-text-title profile-info-border-both">Following</p>
         </div>
-        <p><%= tweet.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%-I:%M %p - %-d %b %Y") %></p>
-
-        <a href="#">Favorite</a>
-        <% if current_user == tweet.user %>
-          <%= link_to "Delete", tweet_path(tweet), method: :delete %>
-        <% end %>
+        <div class="row">
+          <p class="col-md-2 profile-info-text profile-info-border-left"><%= @user.tweets.count %></p>
+          <p class="col-md-2 profile-info-text profile-info-border-left"><%= link_to @user.followers.count, relationship_path, class: "qa-user-followers" %></p>
+          <p class="col-md-2 profile-info-text profile-info-border-both"><%= link_to @user.following.count, relationship_path %></p>
+          <div class="col-md-2 follow-button">
+            <% if current_user.id != @user.id %>
+              <% if !current_user.following?(@user) %>
+                <%= form_for current_user.active_relationships.build do |f| %>
+                  <div><%= hidden_field_tag :followed_id, @user.id %></div>
+                  <%= f.submit "Follow", class: "btn btn-primary qa-follow-a-user" %>
+                <% end %>
+              <% else %>
+                <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id), html: {method: :delete, class: 'u-inline'}) do |f| %>
+                  <div><%= hidden_field_tag :followed_id, @user.id %></div>
+                  <%= f.submit "Unfollow", class: "btn btn-primary" %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
-  <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 u-margin-right-sm">
+      <h3><%= @user.email %></h3>
+
+      <h5>Gaslight is an agile software development consultancy. We design and develop web and mobile apps for growth-minded companies—from startups to the Fortune 100.</h5>
+      <p>Cincinnati, OH</p>
+      <a href="#">teamgaslight.com</a>
+    </div>
+    <h4 class="col-offset-md-8 col-md-8 profile-info-type">Tweets</h4>
+    <div class="col-md-8">
+      <% @user.tweets.each do |tweet| %>
+        <div class="row tweet-box u-pad-left">
+          <div class="row u-margin-top-xs">
+            <h3 class="col-md-5 tweet-email"><%= tweet.user.email if tweet.user %></h3>
+            <h3 class="col-md-7 tweet-content"><strong><%= tweet.content %></strong></h3>
+          </div>
+          <p><%= tweet.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%-I:%M %p - %-d %b %Y") %></p>
+
+          <a href="#">Favorite</a>
+          <% if current_user == tweet.user %>
+            <%= link_to "Delete", tweet_path(tweet), method: :delete %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
