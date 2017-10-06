@@ -15,6 +15,7 @@ feature 'Follow a user' do
     follow_a_user_page.follow
 
     expect(current_path).to eq("/users/#{tweet.user.id}")
-    expect(follow_a_user_page).to have_text("Followers: #{tweet.user.followers.count}")
+    # TODO: find a better way of doing this aka what i'm checking for
+    expect(follow_a_user_page).to have_text("#{tweet.user.followers.count}")
   end
 end
