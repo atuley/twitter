@@ -1,5 +1,4 @@
 class TweetController < ApplicationController
-
   before_action :authorize, only: [:new, :create]
   before_action :find_tweet, only: [:destroy]
 
@@ -13,7 +12,7 @@ class TweetController < ApplicationController
     if @tweet.save
       redirect_to "/"
     else
-      render "new"
+      render :new, status: 422
     end
   end
 

@@ -1,7 +1,7 @@
 <%= form_for(@tweet, url: tweet_new_path) do |f| %>
   <%= f.label :content, 'What is on your mind?' %>
-  <%= f.text_area :content, class: 'form-control' %>
+  <%= f.text_area :content, id: 'qa-tweet-content', class: 'form-control' %>
   <div class="row">
-    <%= f.button 'Submit', class: 'u-margin-left-sm u-margin-top-sm btn btn-primary' %>
+    <%= f.button 'Submit', id: 'qa-submit',class: 'u-margin-left-sm u-margin-top-sm btn btn-primary qa-submit' %>
   </div>
 <% end %>
