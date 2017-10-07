@@ -17,7 +17,7 @@
           </div>
           <p><%= tweet.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%-I:%M %p - %-d %b %Y") %></p>
 
-          <a href="#">Favorite</a>
+          <%= link_to "Favorite", current_user.email, class: "qa-favorite-tweet-#{tweet.id}" %>
           <% if current_user == tweet.user %>
             <%= link_to "Delete", tweet_path(tweet), method: :delete %>
           <% end %>
