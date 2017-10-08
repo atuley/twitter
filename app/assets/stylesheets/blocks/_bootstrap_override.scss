@@ -1,7 +1,6 @@
 @media (min-width: 768px) {
   .navbar-nav {
     float: right !important;
-
   }
 }
 
@@ -27,4 +26,8 @@
 .jumbotron {
   padding: 0 !important;
   margin: 0 !important;
+}
+
+.btn-primary {
+  background-color: black !important;
 }

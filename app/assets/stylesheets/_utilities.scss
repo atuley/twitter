@@ -48,4 +48,13 @@
   &-center {
     text-align: center;
   }
+  &-right {
+    text-align: right;
+  }
+}
+
+.u-float {
+  &-right {
+    float: right;
+  }
 }
