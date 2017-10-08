@@ -1,4 +1,27 @@
+.circular-image {
+  border-radius: 50%;
+  background-image: url("/assets/awkwardalex-1.jpg");
+  height: 200px;
+  width: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  position: relative;
+  bottom: 100px;
+  border: 3px solid white;
+}
+
+.profile-image {
+  background-image: url("/assets/clara-marie-228661.jpg");
+  height: 400px;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
 .profile-info {
+  height: 65px;
   width: 100%;
   background-color: white;
 }
@@ -38,4 +61,9 @@
   bottom: 15px !important;
   margin-right: 45px;
   float: right !important;
+}
+
+.info {
+  position: relative;
+  bottom: 100px;
 }
