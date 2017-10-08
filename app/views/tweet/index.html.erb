@@ -17,11 +17,10 @@
           </div>
           <p><%= tweet.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%-I:%M %p - %-d %b %Y") %></p>
 
-
-          <% if tweet_favored?(tweet.id) %>
+          <% if current_user && tweet_favored?(tweet.id) %>
             <%= link_to "Unfavorite",favorite_path(get_favorite(tweet.id)), method: :delete %>
           <% else %>
-            <%= link_to "Favorite", favorites_path(tweet_id: tweet.id), method: :post %>
+            <%= link_to "Favorite", favorites_path(tweet_id: tweet.id), method: :post, class: "qa-favorite-tweet-#{tweet.id}" %>
           <% end %>
 
           <p><%= tweet.favorites.count %></p>

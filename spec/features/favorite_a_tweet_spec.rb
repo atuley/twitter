@@ -13,6 +13,6 @@ feature 'Favorite a tweet' do
     favorite_a_tweet_page.favorite(tweet)
 
     expect(current_path).to eq("/")
-    expect(favorite_a_tweet_page).to have_text("Favorite #{tweet.favorites}")
+    expect(favorite_a_tweet_page).to have_text("Unfavorite #{tweet.favorites.count}")
   end
 end
