@@ -28,7 +28,6 @@
           <% end %>
           <%= tweet.favorites.count %>
 
-
           <% if current_user == tweet.user %>
             <%= link_to "Delete", tweet_path(tweet), method: :delete %>
           <% end %>
