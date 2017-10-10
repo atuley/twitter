@@ -29,7 +29,9 @@
           <%= tweet.favorites.count %>
 
           <% if current_user == tweet.user %>
-            <%= link_to "Delete", tweet_path(tweet), method: :delete %>
+            <%= link_to tweet_path(tweet), method: :delete do %>
+              <span class="glyphicon glyphicon-trash trash-button"></span>
+            <% end %>
           <% end %>
         </div>
       </div>
