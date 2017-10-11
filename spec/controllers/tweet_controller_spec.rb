@@ -5,8 +5,6 @@ RSpec.describe TweetController, type: :controller do
   let!(:valid_tweet) { create(:tweet) }
   let!(:invalid_tweet) { build(:tweet, content: "") }
 
-  # TODO: setup file, heroku deploy
-  # QUESTION: test current url and stuff?
   # QUESTION: selenium-server to drive tests
 
   describe "GET #new" do

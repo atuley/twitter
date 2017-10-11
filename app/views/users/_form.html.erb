@@ -11,6 +11,11 @@
         </ul>
       </div>
     <% end %>
+    <% if flash[:error] %>
+      <div class="alert alert-danger">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
 
     <div class="row col-md-4">
       <%= f.label :email %>

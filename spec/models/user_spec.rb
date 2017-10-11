@@ -1,8 +1,6 @@
 require "rails_helper"
 
 RSpec.describe User do
-  # QUESTION: using factories in unit tests
-  # QUESTION: testing relationships like below
   let!(:user) { create(:user) }
   let!(:another_user) { create(:user) }
 
