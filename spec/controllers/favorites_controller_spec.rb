@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe FavoritesController, type: :controller do
   let!(:user) { create(:user) }
   let!(:tweet) { create(:tweet) }
-
-  # TODO: create favorite factory to get DELETE to pass, maybe add favorite ID
+  let!(:favorite) { create(:favorite) }
 
   describe "POST #create" do
     it "redirects_back" do
@@ -15,7 +14,7 @@ RSpec.describe FavoritesController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-    xit "deletes session refreshes page" do
+    it "deletes session refreshes page" do
       allow(controller).to receive(:current_user) { user }
       delete :destroy, params: {id: tweet.id}
       expect(response).to have_http_status(302)

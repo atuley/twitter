@@ -1,7 +1,10 @@
 require "rails_helper"
 
 RSpec.describe User do
-  # QUESTION: should I be adding values to actually test some of this
+  # QUESTION: using factories in unit tests
+  # QUESTION: testing relationships like below
+  let!(:user) { create(:user) }
+  let!(:another_user) { create(:user) }
 
   describe "has_many" do
     it { should have_many :tweets }
@@ -32,30 +35,33 @@ RSpec.describe User do
   end
 
   describe "follow" do
-    let!(:user) { create(:user) }
-    let!(:other) { create(:user) }
+    it "creates active_relationship" do
+      user.follow(another_user)
+      relationship = user.active_relationships.first
 
-    xit "follows user" do
-      active_relationships.create(followed_id: other.id)
+      expect(user.active_relationships.count).to eq(1)
+      expect(relationship.follower_id).to eq(user.id)
+      expect(relationship.followed_id).to eq(another_user.id)
     end
   end
 
   describe "unfollow" do
-    let!(:user) { create(:user) }
-    let!(:other) { create(:user) }
+    it "deletes active_relationship" do
+      create(:relationship, { follower: user, followed: another_user })
+      user.unfollow(another_user)
 
-    xit "unfollows user" do
-      active_relationships.find_by(followed_id: other.id)
+      expect(user.active_relationships.count).to eq(0)
     end
   end
 
   describe "following?" do
-    let!(:user) { create(:user) }
-    let!(:other) { create(:user) }
+    it "returns true if user is following another user" do
+      create(:relationship, { follower: user, followed: another_user })
+      expect(user.following?(another_user)).to eq(true)
+    end
 
-    # TODO: active_relationships factory
-    xit "unfollows user" do
-      expect(user.following?(other)).to eq(true)
+    it "returns false if user is not following another user" do
+      expect(user.following?(another_user)).to eq(false)
     end
   end
 end

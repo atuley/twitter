@@ -16,17 +16,18 @@ class User < ApplicationRecord
   # TODO: fix email hash check
   # TODO: fix duplicate logins/account creation
   validates :email, format: { with: %r{.+@.+\..+} }
+  # TODO: change password length
   validates :password, length: { within: 6..40 }
 
-  def follow(other)
-    active_relationships.create(followed_id: other.id)
+  def follow(another_user)
+    active_relationships.create(followed_id: another_user.id)
   end
 
-  def unfollow(other)
-    active_relationships.find_by(followed_id: other.id).destroy
+  def unfollow(another_user)
+    active_relationships.find_by(followed_id: another_user.id).destroy
   end
 
-  def following?(other)
-    following.include?(other)
+  def following?(another_user)
+    following.include?(another_user)
   end
 end
