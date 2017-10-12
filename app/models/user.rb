@@ -11,13 +11,11 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  validates :email, uniqueness: true
   validates :email, :password, :password_confirmation, presence: true
-  # TODO: implement a "Your Feed" that only shows your tweets and the people you follow, and then a home page thing
-  # TODO: fix email hash check
-  # TODO: fix duplicate logins/account creation
   validates :email, format: { with: %r{.+@.+\..+} }
-  # TODO: change password length
-  validates :password, length: { within: 6..40 }
+  # QUESTION: 200 length enough?
+  validates :password, length: { within: 6..200 }
 
   def follow(another_user)
     active_relationships.create(followed_id: another_user.id)

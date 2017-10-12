@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    # TODO: understand strong parameters and their use
     @user = User.new(user_params)
 
     if @user.save

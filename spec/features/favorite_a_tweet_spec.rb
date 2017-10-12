@@ -13,7 +13,7 @@ feature 'Favorite a tweet' do
     favorite_a_tweet_page.favorite(tweet)
 
     expect(current_path).to eq("/")
-    # TODO: refactor how this is checked
+    # QUESTION: check for class too?
     expect(favorite_a_tweet_page).to have_text("#{tweet.favorites.count}")
   end
 end

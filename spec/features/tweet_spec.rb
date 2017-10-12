@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Create tweet' do
   let!(:valid_tweet) { build(:tweet) }
-  let!(:user) { create(:user) }
+  let!(:user) { create(:user, :skip_validate) }
 
   before(:each) do
     user_log_in_page.sign_in(user)
