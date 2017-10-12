@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe FavoritesController, type: :controller do
-  let!(:user) { create(:user) }
+  let!(:user) { create(:user, :skip_validate) }
   let!(:tweet) { create(:tweet) }
   let!(:favorite) { create(:favorite) }
 

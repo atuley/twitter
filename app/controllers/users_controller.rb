@@ -5,17 +5,11 @@ class UsersController < ApplicationController
 
   def create
     # TODO: understand strong parameters and their use
-    # TODO: refactor this
-
-    if !User.exists?(email: user_params[:email])
-      @user = User.new(user_params)
-    else
-      flash[:error] = "User already exists"
-    end
+    @user = User.new(user_params)
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_url
+      redirect_to root_url, notice: 'Thanks'
     else
       render :new, status: 422
     end

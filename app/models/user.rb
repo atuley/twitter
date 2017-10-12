@@ -11,8 +11,8 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  validates :email, uniqueness: true
   validates :email, :password, :password_confirmation, presence: true
-  # TODO: fix duplicate logins/account creation
   validates :email, format: { with: %r{.+@.+\..+} }
   # QUESTION: 200 length enough?
   validates :password, length: { within: 6..200 }

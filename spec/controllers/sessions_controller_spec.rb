@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
-  let!(:valid_user_infomation) { create(:user) }
+  let!(:valid_user_infomation) { create(:user, :skip_validate) }
   let!(:invalid_user_infomation) { build(:user, {email: "email.com"}) }
 
   describe "GET #new" do
