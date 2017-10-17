@@ -30,8 +30,8 @@ RSpec.describe User do
   end
 
   describe "functions" do
-    let!(:user) { create(:user, :skip_validate) }
-    let!(:another_user) { create(:user, :skip_validate) }
+    let!(:user) { create(:user) }
+    let!(:another_user) { create(:user) }
 
     describe "follow" do
       it "creates active_relationship" do

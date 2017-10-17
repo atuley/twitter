@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'view relationships' do
   let!(:tweet) { create(:tweet) }
-  let!(:user) { create(:user, {email: 'foo2@bar.com'}) }
+  let!(:user) { create(:user) }
 
   before(:each) do
     user_log_in_page.sign_in(user)

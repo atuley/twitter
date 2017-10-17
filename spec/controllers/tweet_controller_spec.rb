@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe TweetController, type: :controller do
-  let!(:user) { create(:user, :skip_validate) }
+  let!(:user) { create(:user) }
   let!(:valid_tweet) { create(:tweet) }
   let!(:invalid_tweet) { build(:tweet, content: "") }
 

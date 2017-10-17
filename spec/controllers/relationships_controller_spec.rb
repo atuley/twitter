@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe RelationshipsController, type: :controller do
   # QUESTION: this skip validate is no good, implement some sort of Faker
-  let!(:user) { create(:user, :skip_validate) }
-  let!(:followed_user) { create(:user, :skip_validate, { email: "foo2@bar.com"} )}
+  let!(:user) { create(:user) }
+  let!(:followed_user) { create(:user)}
   let!(:relationship) { create(:relationship, { follower: user} ) }
 
   describe "POST #create" do

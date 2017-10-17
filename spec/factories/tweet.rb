@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :tweet do
-    user { create(:user, :skip_validate) }
+    user { create(:user) }
     content "This is a tweet"
   end
 end

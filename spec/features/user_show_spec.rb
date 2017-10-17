@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Log into account' do
-  let!(:user) { create(:user, {email: 'foo2@bar.com'}) }
+  let!(:user) { create(:user) }
   let!(:tweet) { create(:tweet) }
 
   before(:each) do
