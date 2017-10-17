@@ -5,8 +5,6 @@ RSpec.describe TweetController, type: :controller do
   let!(:valid_tweet) { create(:tweet) }
   let!(:invalid_tweet) { build(:tweet, content: "") }
 
-  # QUESTION: selenium-server to drive tests
-
   describe "GET #new" do
     it "while logged in returns http success" do
       allow(controller).to receive(:current_user) { user }

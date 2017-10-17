@@ -4,6 +4,9 @@ feature 'Follow a user' do
   let!(:tweet) { create(:tweet) }
   let!(:user) { create(:user) }
 
+  # TODO: unfollow user
+  # TODO: fix viewing profile when not logged in
+
   before(:each) do
     user_log_in_page.sign_in(user)
   end
