@@ -32,6 +32,7 @@
   &-text {
     display: inline;
     text-align: center;
+    z-index: 100000;
 
     &-title{
       margin-top: 10px;
@@ -63,6 +64,7 @@
   bottom: 15px !important;
   margin-right: 45px;
   float: right !important;
+  z-index: 10000;
 }
 
 .info {

@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :email, :password, :password_confirmation, presence: true
   validates :email, format: { with: %r{.+@.+\..+} }
   # QUESTION: 200 length enough?
-  validates :password, length: { within: 6..200 }
+  validates :password, length: { within: 6..255 }
 
   def follow(another_user)
     active_relationships.create(followed_id: another_user.id)

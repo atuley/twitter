@@ -17,22 +17,29 @@
           </div>
           <p><%= tweet.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%-I:%M %p - %-d %b %Y") %></p>
 
-          <% if current_user && tweet_favored?(tweet.id) %>
-            <%= link_to favorite_path(get_favorite(tweet.id)), method: :delete, class: "favorite-button-favorited" do %>
-              <span class="glyphicon glyphicon-star"></span>
-            <% end %>
-          <% else %>
-            <%= link_to favorites_path(tweet_id: tweet.id), method: :post, class: "qa-favorite-tweet-#{tweet.id} favorite-button" do %>
-              <span class="glyphicon glyphicon-star"></span>
-            <% end %>
-          <% end %>
-          <%= tweet.favorites.count %>
+          <div class="row">
+            <div class="col-md-4">
 
-          <% if current_user == tweet.user %>
-            <%= link_to tweet_path(tweet), method: :delete do %>
-              <span class="glyphicon glyphicon-trash trash-button"></span>
-            <% end %>
-          <% end %>
+            </div>
+            <div class="col-md-4">
+              <% if current_user && tweet_favored?(tweet.id) %>
+                <%= link_to favorite_path(get_favorite(tweet.id)), method: :delete, class: "favorite-button-favorited" do %>
+                  <span class="glyphicon glyphicon-star"></span>
+                <% end %>
+              <% else %>
+                <%= link_to favorites_path(tweet_id: tweet.id), method: :post, class: "qa-favorite-tweet-#{tweet.id} favorite-button" do %>
+                  <span class="glyphicon glyphicon-star"></span>
+                <% end %>
+              <% end %>
+              <%= tweet.favorites.count %>
+              
+              <% if current_user == tweet.user %>
+                <%= link_to tweet_path(tweet), method: :delete do %>
+                  <span class="glyphicon glyphicon-trash trash-button"></span>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     <% end %>
