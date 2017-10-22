@@ -4,7 +4,6 @@ feature 'Follow a user' do
   let!(:tweet) { create(:tweet) }
   let!(:user) { create(:user) }
 
-  # TODO: fix viewing profile when not logged in
   # TODO: README
 
   before(:each) do
