@@ -18,7 +18,6 @@ feature 'Follow a user' do
 
     follow_a_user_page.unfollow
     expect(current_path).to eq("/users/#{tweet.user.id}")
-    # QUESTION: check for class as well?
     expect(follow_a_user_page).to have_text("0")
   end
 end
