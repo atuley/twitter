@@ -21,19 +21,27 @@
           <p class="col-md-2 profile-info-text profile-info-border-left"><%= link_to @user.followers.count, relationship_path, class: "qa-user-followers" %></p>
           <p class="col-md-2 profile-info-text profile-info-border-both"><%= link_to @user.following.count, relationship_path %></p>
           <div class="col-md-2 follow-button">
-            <% if current_user.id != @user.id %>
-              <% if !current_user.following?(@user) %>
-                <%= link_to relationships_path(followed_id: @user.id), method: :post, class: 'qa-follow-a-user' do %>
-                  <div class="btn btn-primary">
-                    Follow
-                  </div>
+            <% if current_user %>
+              <% if current_user.id != @user.id %>
+                <% if !current_user.following?(@user) %>
+                  <%= link_to relationships_path(followed_id: @user.id), method: :post, class: 'qa-follow-a-user' do %>
+                    <div class="btn btn-primary">
+                      Follow
+                    </div>
+                  <% end %>
+                <% else %>
+                  <%= link_to relationship_path(followed_id: @user.id), method: :delete, class: 'qa-unfollow-a-user' do %>
+                    <div class="btn btn-primary">
+                      Unfollow
+                    </div>
+                  <% end %>
                 <% end %>
-              <% else %>
-                <%= link_to relationship_path(followed_id: @user.id), method: :delete do %>
-                  <div class="btn btn-primary">
-                    Unfollow
-                  </div>
-                <% end %>
+              <% end %>
+            <% else %>
+              <%= link_to relationships_path(followed_id: @user.id), method: :post, class: 'qa-follow-a-user' do %>
+                <div class="btn btn-primary">
+                  Follow
+                </div>
               <% end %>
             <% end %>
           </div>
