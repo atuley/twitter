@@ -6,6 +6,7 @@ feature 'Follow a user' do
 
   # TODO: unfollow user
   # TODO: fix viewing profile when not logged in
+  # TODO: README
 
   before(:each) do
     user_log_in_page.sign_in(user)
