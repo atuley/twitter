@@ -30,4 +30,15 @@ class TweetController < ApplicationController
   def tweet_params
     params.require(:tweet).permit(:content, :user_id)
   end
+
+  def tweet_favored?(tweet_id)
+	  !get_favorite(tweet_id).nil?
+  end
+
+  def get_favorite(tweet_id)
+    current_user.favorites.find_by(tweet_id: tweet_id)
+  end
+
+  helper_method :tweet_favored?
+  helper_method :get_favorite
 end

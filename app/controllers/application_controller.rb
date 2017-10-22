@@ -1,18 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  #TODO: move these functions else where
-  def get_favorite(tweet_id)
-    current_user.favorites.find_by(tweet_id: tweet_id)
-  end
-
-  def tweet_favored?(tweet_id)
-	  !get_favorite(tweet_id).nil?
-  end
-
-  helper_method :tweet_favored?
-  helper_method :get_favorite
-
   private
 
   def current_user
