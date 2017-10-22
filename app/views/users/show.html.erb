@@ -70,8 +70,8 @@
           </div>
           <p><%= tweet.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%-I:%M %p - %-d %b %Y") %></p>
 
-          <% if current_user && tweet.tweet_favored?(tweet.id) %>
-            <%= link_to favorite_path(tweet.get_favorite(tweet.id)), method: :delete, class: "favorite-button-favorited" do %>
+          <% if current_user && tweet_favored?(tweet.id) %>
+            <%= link_to favorite_path(get_favorite(tweet.id)), method: :delete, class: "favorite-button-favorited" do %>
               <span class="glyphicon glyphicon-star"></span>
             <% end %>
           <% else %>
