@@ -1,9 +1,5 @@
 <h1>Log In</h1>
-<% if flash[:error] %>
-  <div class="alert alert-danger">
-    <%= flash[:error] %>
-  </div>
-<% end %>
+<%= render "errors" %>
 
 <%= form_tag sessions_path do %>
   <div class="field">

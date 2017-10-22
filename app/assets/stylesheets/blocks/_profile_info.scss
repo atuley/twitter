@@ -28,22 +28,22 @@
 
 }
 
-.profile-info {
+.info {
   &-text {
     display: inline;
     text-align: center;
     z-index: 100000;
 
-    &-title{
+    &--title{
       margin-top: 10px;
       margin-bottom: 0px;
     }
   }
   &-border {
-    &-left {
+    &--left {
       border-left: 1px solid #d6d6d6;
     }
-    &-both {
+    &--both {
       border-left: 1px solid #d6d6d6;
       border-right: 1px solid #d6d6d6;
     }
