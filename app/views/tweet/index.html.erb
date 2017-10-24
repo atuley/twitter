@@ -4,7 +4,9 @@
       <h1>Feed</h1>
     </div>
     <div class="col-md-2">
-      <a class="new-button u-float-right" href=<%= tweet_new_path %>><span class="glyphicon glyphicon-new-window"></span></a>
+      <%= link_to tweet_new_path, class: "new-button u-float-right" do %>
+        <span class="glyphicon glyphicon-new-window">
+      <% end %>
     </div>
   </div>
   <div class="u-margin-top-sm">
@@ -12,32 +14,21 @@
       <div class="row">
         <div class="col-md-8 tweet-box">
           <div class="row u-margin-top-xs">
-            <h3 class="col-md-4 tweet-email"><%= link_to tweet.user.email, tweet.user, class: "qa-user-email-#{tweet.user.id}" %></h3>
-            <h3 class="col-md-8 tweet-content"><strong><%= tweet.content %></strong></h3>
+            <h3 class="col-md-4 tweet-email">
+              <%= link_to tweet.user.email, tweet.user, class: "qa-user-email-#{tweet.user.id}" %>
+            </h3>
+            <h3 class="col-md-8 tweet-content">
+              <strong><%= tweet.content %></strong>
+            </h3>
           </div>
           <p><%= tweet.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%-I:%M %p - %-d %b %Y") %></p>
 
           <div class="row">
+            <div class="col-md-4"></div>
             <div class="col-md-4">
-
-            </div>
-            <div class="col-md-4">
-              <% if current_user && tweet_favored?(tweet.id) %>
-                <%= link_to favorite_path(get_favorite(tweet.id)), method: :delete, class: "favorite-button-favorited" do %>
-                  <span class="glyphicon glyphicon-star"></span>
-                <% end %>
-              <% else %>
-                <%= link_to favorites_path(tweet_id: tweet.id), method: :post, class: "qa-favorite-tweet-#{tweet.id} favorite-button" do %>
-                  <span class="glyphicon glyphicon-star"></span>
-                <% end %>
-              <% end %>
+              <%= render "favorite_button", tweet: tweet %>
               <%= tweet.favorites.count %>
-              
-              <% if current_user == tweet.user %>
-                <%= link_to tweet_path(tweet), method: :delete do %>
-                  <span class="glyphicon glyphicon-trash trash-button"></span>
-                <% end %>
-              <% end %>
+              <%= render "delete_button", tweet: tweet %>
             </div>
           </div>
         </div>

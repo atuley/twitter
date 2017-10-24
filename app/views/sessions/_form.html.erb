@@ -1,9 +1,5 @@
 <h1>Log In</h1>
-<% if flash[:error] %>
-  <div class="alert alert-danger">
-    <%= flash[:error] %>
-  </div>
-<% end %>
+<%= render "errors" %>
 
 <%= form_tag sessions_path do %>
   <div class="field">
@@ -15,4 +11,5 @@
     <%= password_field_tag :password %>
   </div>
   <%= submit_tag "Log In", id: 'qa-log-in', class: 'btn btn-primary u-margin-top-xs' %>
+  <%= link_to "or Sign Up", signup_path %>
 <% end %>

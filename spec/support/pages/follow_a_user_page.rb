@@ -9,4 +9,8 @@ class FollowAUserPage < Page
   def follow
     find(".qa-follow-a-user").click
   end
+
+  def unfollow
+    find(".qa-unfollow-a-user").click
+  end
 end

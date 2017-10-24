@@ -1,24 +1,19 @@
-# README
+# Twitter Exercise
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Dependencies
+  * Ruby version: 2.3.1
+  * Rails version: 5.0.5
 
-Things you may want to cover:
+## Setup
+  1. `git clone https://github.com/atuley/twitter.git`
+  2. `cd twitter`
+  3. `bundle install`
 
-* Ruby version
+## Database Creation
+  1. `rake db:create`
+  2. `rake db:migrate`
+  3. `rake db:seed`
+  4. `rails server`
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Testing
+  * Run all tests: `bundle exec rspec`

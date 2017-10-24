@@ -1,7 +1,5 @@
 <div class="jumbotron">
-  <div class="profile-image">
-
-  </div>
+  <div class="profile-image"></div>
 </div>
 
 <div class="profile-info u-margin-bottom-sm ">
@@ -12,33 +10,34 @@
       </div>
       <div class="col-md-9 u-pad-left">
         <div class="row">
-          <p class="col-md-2 profile-info-text profile-info-text-title profile-info-border-left">Tweets</p>
-          <p class="col-md-2 profile-info-text profile-info-text-title profile-info-border-left">Followers</p>
-          <p class="col-md-2 profile-info-text profile-info-text-title profile-info-border-both">Following</p>
+          <p class="col-md-2 info-text info-text--title info-border--left">
+            Tweets
+          </p>
+          <p class="col-md-2 info-text info-text--title info-border--left">
+            Followers
+          </p>
+          <p class="col-md-2 info-text info-text--title info-border--both">
+            Following
+          </p>
         </div>
         <div class="row">
-          <p class="col-md-2 profile-info-text profile-info-border-left"><%= @user.tweets.count %></p>
-          <p class="col-md-2 profile-info-text profile-info-border-left"><%= link_to @user.followers.count, relationship_path, class: "qa-user-followers" %></p>
-          <p class="col-md-2 profile-info-text profile-info-border-both"><%= link_to @user.following.count, relationship_path %></p>
+          <p class="col-md-2 info-text info-border--left">
+            <%= @user.tweets.count %>
+          </p>
+          <p class="col-md-2 info-text info-border--left">
+            <%= link_to @user.followers.count, relationship_path, class: "qa-user-followers" %>
+          </p>
+          <p class="col-md-2 info-text info-border--both">
+            <%= link_to @user.following.count, relationship_path %>
+          </p>
           <div class="col-md-2 follow-button">
-            <% if current_user.id != @user.id %>
-              <% if !current_user.following?(@user) %>
-                <%= form_for current_user.active_relationships.build do |f| %>
-                  <div><%= hidden_field_tag :followed_id, @user.id %></div>
-                  <%= f.submit "Follow", class: "btn btn-primary qa-follow-a-user" %>
-                <% end %>
-              <% else %>
-                <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id), html: {method: :delete, class: 'u-inline'}) do |f| %>
-                  <div><%= hidden_field_tag :followed_id, @user.id %></div>
-                  <%= f.submit "Unfollow", class: "btn btn-primary" %>
-                <% end %>
-              <% end %>
-            <% end %>
+            <%= render "follow_button", user: @user%>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 </div>
 
 <div class="container info">
@@ -55,27 +54,17 @@
       <% @user.tweets.each do |tweet| %>
         <div class="row tweet-box u-pad-left">
           <div class="row u-margin-top-xs">
-            <h3 class="col-md-5 tweet-email"><%= tweet.user.email if tweet.user %></h3>
-            <h3 class="col-md-7 tweet-content"><strong><%= tweet.content %></strong></h3>
+            <h3 class="col-md-5 tweet-email">
+              <%= tweet.user.email if tweet.user %>
+            </h3>
+            <h3 class="col-md-7 tweet-content">
+              <strong><%= tweet.content %></strong>
+            </h3>
           </div>
           <p><%= tweet.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%-I:%M %p - %-d %b %Y") %></p>
-
-          <% if current_user && tweet_favored?(tweet.id) %>
-            <%= link_to favorite_path(get_favorite(tweet.id)), method: :delete, class: "favorite-button-favorited" do %>
-              <span class="glyphicon glyphicon-star"></span>
-            <% end %>
-          <% else %>
-            <%= link_to favorites_path(tweet_id: tweet.id), method: :post, class: "qa-favorite-tweet-#{tweet.id} favorite-button" do %>
-              <span class="glyphicon glyphicon-star"></span>
-            <% end %>
-          <% end %>
+          <%= render "favorite_button", tweet: tweet %>
           <%= tweet.favorites.count %>
-
-          <% if current_user == tweet.user %>
-            <%= link_to tweet_path(tweet), method: :delete do %>
-              <span class="glyphicon glyphicon-trash trash-button"></span>
-            <% end %>
-          <% end %>
+          <%= render "delete_button", tweet: tweet %>
         </div>
       <% end %>
     </div>

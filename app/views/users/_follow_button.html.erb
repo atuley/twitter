@@ -1,0 +1,23 @@
+<% if current_user %>
+   <% if current_user.id != @user.id %>
+     <% if !current_user.following?(@user) %>
+       <%= link_to relationships_path(followed_id: @user.id), method: :post, class: 'qa-follow-a-user' do %>
+         <div class="btn btn-primary">
+           Follow
+         </div>
+       <% end %>
+     <% else %>
+       <%= link_to relationship_path(followed_id: @user.id), method: :delete, class: 'qa-unfollow-a-user' do %>
+         <div class="btn btn-primary">
+           Unfollow
+         </div>
+       <% end %>
+     <% end %>
+   <% end %>
+ <% else %>
+   <%= link_to relationships_path(followed_id: @user.id), method: :post, class: 'qa-follow-a-user' do %>
+     <div class="btn btn-primary">
+      Follow
+     </div>
+   <% end %>
+ <% end %>
