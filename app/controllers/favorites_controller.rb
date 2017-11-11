@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :authorize, only: :create
+  before_action :authenticate
 
   def create
     @favorite = Favorite.create(tweet_id: params[:tweet_id], user: current_user)

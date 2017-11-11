@@ -1,5 +1,5 @@
 class TweetController < ApplicationController
-  before_action :authorize, only: [:new, :create]
+  before_action :authenticate, only: [:new, :create]
 
   def new
     @tweet = Tweet.new
